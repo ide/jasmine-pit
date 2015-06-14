@@ -10,11 +10,17 @@ assert expect()s (or propogate errors).
 
 jasminePit.install(window);
 
-describe('MyTestSuite', functtion() {
+describe('MyTestSuite', function() {
   pit('Spec 1', function() {
     return funcThatReturnsPromise().then(function(stuff) {
       expect(stuff).toBe(stuff_i_expect_it_to_be);
     });
+  });
+  
+  // jasmine-pit is also compatible with async functions
+  pit('Spec 2', async function() {
+    let stuff = await funcThatReturnsPromise();
+    expect(stuff).toBe(stuff_i_expect_it_to_be);
   });
 });
 ```
